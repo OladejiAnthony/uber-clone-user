@@ -16,9 +16,9 @@ export default function App() {
   console.disableYellowBox = true;
 
   return (
-    <Provider store={store}>
+    <Provider store={store}> 
       <NavigationContainer>
-        <SafeAreaProvider>
+        <SafeAreaProvider> 
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={{ flex: 1 }}

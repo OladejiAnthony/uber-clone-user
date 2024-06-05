@@ -21,7 +21,17 @@ npm install @reduxjs/toolkit
 npm install react-redux
 npm install @react-navigation/native @react-navigation/stack
 npm install react-native-screens react-native-safe-area-context
+npm install react-native-elements
+npm install react-native-vector-icons
+npm install react-native-safe-area-context
 
+
+--Google API:
+1. Google Places Autocomplete
+  npm install react-native-google-places-autocomplete
+2. Directions API
+3. Distance Matrix
+4.
 
 ----
 npm i tailwind-react-native-classnames
