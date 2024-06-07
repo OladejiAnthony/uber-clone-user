@@ -40,7 +40,7 @@ const NavOptions = () => {
               tw`p-1 pl-4 pb-6 pt-3 bg-gray-200 m-2`,
               { width: 140, height: 280 },
             ]}
-            disabled={!origin}
+            disabled={!origin} //disable touchableOpacity if there is no ORIGIN
           >
             <View  style={[tw``, !origin && { opacity: 0.2 }]}>
               <Image

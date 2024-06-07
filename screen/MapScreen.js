@@ -16,7 +16,7 @@ const MapScreen = () => {
       </View>
 
       <View style={tw`h-1/2`}>
-        <Stack.Navigator></Stack.Navigator>
+        {/* <Stack.Navigator></Stack.Navigator> */}
       </View>
     </View>
   );
