@@ -3,8 +3,11 @@ import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {GOOGLE_MAPS_APIKEY} from "@env"
 import { useDispatch } from "react-redux";
 import { setOrigin, setDestination } from "../src/redux/slices/navSlice";
+
+//console.log({GOOGLE_MAPS_APIKEY})
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -23,10 +26,11 @@ const HomeScreen = () => {
           }}
         />
 
+        {/*Search Bar */}
         <GooglePlacesAutocomplete
           placeholder="Where From?"
           nearbyPlacesAPI="GooglePlacesSearch"
-          debounce={400}
+          debounce={400} //execute search after 400milliseconds
           styles={{
             container: {
               flex: 0,
@@ -35,26 +39,33 @@ const HomeScreen = () => {
               fontSize: 18,
             },
           }}
-          onPress={(data, details = null) => {
-            dispatch(
-              setOrigin({
-                location: details.geometry.location,
-                description: data.description,
-              })
-            );
-            dispatch(setDestination(null));
-          }}
-          fetchDetails={true}
           returnKeyType={"search"}
           enablePoweredByContainer={false}
           minLength={2}
           query={{
-            key: "YOUR_GOOGLE_API_KEY", // Replace with your actual API key
+            key: GOOGLE_MAPS_APIKEY,
             language: "en",
           }}
+          onPress={(data, details = null) => {
+            console.log("Data: ", data);
+            console.log("Details: ", details);
+            // Dispatch Action; origin or starting point to redux store
+            if (details) {
+              dispatch(
+                setOrigin({
+                  location: details.geometry.location,
+                  description: data.description,
+                })
+              );
+              // Dispatch Action; destination to redux store
+              dispatch(setDestination(null));
+            }
+          }}
+          fetchDetails={true} //details includes geometry locations, coordinates etc
         />
       </View>
 
+      {/*Navigation */}
       <NavOptions />
     </SafeAreaView>
   );

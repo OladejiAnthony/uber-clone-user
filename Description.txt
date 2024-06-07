@@ -25,6 +25,10 @@ npm install react-native-elements
 npm install react-native-vector-icons
 npm install react-native-safe-area-context
 
+https://github.com/FaridSafi/react-native-google-places-autocomplete
+https://www.npmjs.com/package/react-native-dotenv
+https://www.npmjs.com/package/react-native-maps
+
 
 --Google API:
 1. Google Places Autocomplete
