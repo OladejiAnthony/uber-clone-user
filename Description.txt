@@ -28,7 +28,7 @@ npm install react-native-safe-area-context
 https://github.com/FaridSafi/react-native-google-places-autocomplete
 https://www.npmjs.com/package/react-native-dotenv
 https://www.npmjs.com/package/react-native-maps
-
+https://www.npmjs.com/package/react-native-maps-directions
 
 --Google API:
 1. Google Places Autocomplete
@@ -36,6 +36,18 @@ https://www.npmjs.com/package/react-native-maps
 2. Directions API
 3. Distance Matrix
 4.
+
+----
+KeyboardAvoidingView:
+App.js:
+<KeyboardAvoidingView
+  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+  style={{ flex: 1 }}
+  keyboardVerticalOffset={Platform.OS === 'ios' ? -64 : 0}
+>   
+  <Stack.Navigator></Stack.Navigator>
+</KeyboardAvoidingView>
+  It uses padding for iOS and height for Android
 
 ----
 npm i tailwind-react-native-classnames

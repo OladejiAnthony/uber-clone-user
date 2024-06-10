@@ -42,7 +42,7 @@ const NavOptions = () => {
             ]}
             disabled={!origin} //disable touchableOpacity if there is no ORIGIN
           >
-            <View  style={[tw``, !origin && { opacity: 0.2 }]}>
+            <View  style={tw`${ !origin && "opacity-20" }`}>
               <Image
                 style={{ width: 120, height: 120, resizeMode: "contain" }}
                 source={{ uri: item.image }}

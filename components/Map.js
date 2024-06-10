@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
-
+import MapViewDirections from "react-native-maps-directions";
 import tw from "tailwind-react-native-classnames";
 import { useSelector } from "react-redux";
 import {
@@ -8,22 +8,26 @@ import {
   selectDestination,
   setTravelTimeInformation,
 } from "../src/redux/slices/navSlice.js";
-import MapViewDirections from "react-native-maps-directions";
 // import { GOOGLE_MAPS_APIKEY } from '@env';
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
+import { GOOGLE_MAPS_APIKEY } from '@env';
 
 export default function Map() {
   const origin = useSelector(selectOrigin); //get my location origin
   const destination = useSelector(selectDestination);
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const mapRef = useRef(null);
+  
+  //To Zoom Map
+  const mapRef = useRef(null); 
 
   useEffect(() => {
     if (!origin || !destination) return;
-    mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
+    //zoom & fit to markers
+    mapRef.current.fitToSuppliedMarkers(["origin", "destination"], 
+      {
       edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
     });
   }, [origin, destination]);
@@ -50,9 +54,10 @@ export default function Map() {
     navigation.goBack();
   }
 
+
   return (
     <MapView
-      ref={mapRef}
+      ref={mapRef} //useRef hook To Zoom Map
       style={tw`flex-1`}
       mapType="mutedStandard"
       initialRegion={{
@@ -67,7 +72,7 @@ export default function Map() {
         <MapViewDirections
           origin={origin.description}
           destination={destination.description}
-          apikey={"AIzaSyAbSGVQaQwLRNS9qx6DAj0fHDkyMW9Se24"}
+          apikey={GOOGLE_MAPS_APIKEY}
           strokeWidth={3}
           strokeColor="black"
         />
