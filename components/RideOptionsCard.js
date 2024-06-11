@@ -46,7 +46,6 @@ const RideOptionsCard = () => {
     const navigation = useNavigation();
     const [selected, setSelected] = useState(null);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-
     //console.log(travelTimeInformation);
 
     return (

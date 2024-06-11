@@ -49,6 +49,10 @@ App.js:
 </KeyboardAvoidingView>
   It uses padding for iOS and height for Android
 
+---
+Internalization JavaScript API
+Allows you to format a text using natural js Api
+
 ----
 npm i tailwind-react-native-classnames
 

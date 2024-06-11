@@ -32,21 +32,25 @@ export default function Map() {
     });
   }, [origin, destination]);
 
-  //getTravelTime
+  //Distance Matrix API - calculate TravelTime function
   useEffect(() => {
     if (!origin || !destination) return;
+    //Get Request - Fetch Info from Google Distance Matrix API
     const getTravelTime = async () => {
       fetch(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=AIzaSyAbSGVQaQwLRNS9qx6DAj0fHDkyMW9Se24`
+        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_APIKEY}`
       )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          //dispatch to redux store
           dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
         });
     };
+
+
     getTravelTime();
-  }, [origin, destination]);
+  }, [origin, destination, GOOGLE_MAPS_APIKEY]);
 
   if (!origin) {
     Alert.alert("Ops!", "Informe a origem antes de prosseguir!");
